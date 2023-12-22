@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: stock-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.8:8848
+        username: nacos
+        password: nacos
+        group: SEATA_GROUP
+  datasource:
+    druid:
+      db-type: postgres
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://127.0.0.1:5432/test?currentSchema=seata_stock
+      username: postgres
+      password: postgres
+      initial-size: 4
+      max-active: 8
+      min-idle: 4
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  type-aliases-package: com.tiger.seata.stock.model
+  mapper-locations: classpath:mapper/**.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  enable-auto-data-source-proxy: true
+  tx-service-group: my_test_tx_group
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 192.168.100.8:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      application: seata-server
+      namespace: public
+  #  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.100.8:8848
+#      username: nacos
+#      password: nacos
+#      group: SEATA_GROUP
+#      data-id: seataServer.properties
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+#    enable-degrade: false
+#    grouplist:
+#      default: 127.0.0.1:8091
+  client:
+    rm:
+      report-retry-count: 3
+      report-success-enable: true
+server:
+  port: 8081

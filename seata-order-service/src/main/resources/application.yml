@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: order-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      server-addr: 192.168.100.8:8848
+      username: nacos
+      password: nacos
+      discovery:
+        group: SEATA_GROUP
+  datasource:
+    druid:
+      db-type: postgres
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://127.0.0.1:5432/test?currentSchema=seata_order
+      username: postgres
+      password: postgres
+      initial-size: 4
+      max-active: 8
+      min-idle: 4
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 8082
+mybatis-plus:
+  mapper-locations: classpath:mapper/**.xml
+  type-aliases-package: com.tiger.seata.order.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    use-generated-keys: true
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  enable-auto-data-source-proxy: false
+  tx-service-group: my_test_tx_group
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 192.168.100.8:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      application: seata-server
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+  client:
+    rm:
+      report-retry-count: 3
+      report-success-enable: true
