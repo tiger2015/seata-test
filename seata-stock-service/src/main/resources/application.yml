@@ -32,7 +32,7 @@ mybatis-plus:
 seata:
   enabled: true
   application-id: ${spring.application.name}
-  enable-auto-data-source-proxy: true
+  enable-auto-data-source-proxy: false
   tx-service-group: my_test_tx_group
   registry:
     type: nacos
