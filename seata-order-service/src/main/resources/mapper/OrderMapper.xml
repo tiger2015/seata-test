@@ -5,7 +5,7 @@
 <mapper namespace="com.tiger.seata.order.mapper.OrderMapper">
 
     <insert id="insert" parameterType="com.tiger.seata.order.model.Order" useGeneratedKeys="true" keyProperty="order.id">
-        insert into order_tbl(order_no, user_id, commodity_code, "count", amount)
+        insert into t_order(order_no, user_id, commodity_code, "count", amount)
         values (#{order.orderNo}, #{order.userId}, #{order.commodityCode}, #{order.count}, #{order.amount})
     </insert>
 </mapper>

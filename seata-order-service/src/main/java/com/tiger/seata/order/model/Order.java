@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @Version: 1.0
  **/
 @Data
-@TableName(value = "order_tbl")
+@TableName(value = "t_order")
 public class Order implements Serializable {
     private static final long serialVersionUID = 4049178889955450103L;
 

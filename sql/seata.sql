@@ -7,7 +7,7 @@ create table if not exists seata.t_account(
   primary key(id)
 )
 
--- ÈÕÖ¾±í
+-- æ—¥å¿—è¡¨
 CREATE TABLE IF NOT EXISTS seata.undo_log
 (
     id            BIGINT   NOT NULL,
@@ -35,7 +35,7 @@ create table if not exists seata_order.order_tbl(
   primary key (id)
 )
 
--- ÈÕÖ¾±í
+-- æ—¥å¿—è¡¨
 CREATE TABLE IF NOT EXISTS seata_order.undo_log
 (
     id            BIGINT   NOT NULL,
@@ -59,7 +59,7 @@ create table if not exists seata_stock.stock_tbl(
   primary key(id),
   unique (commodity_code)
 )
--- ÈÕÖ¾±í
+-- æ—¥å¿—è¡¨
 CREATE TABLE IF NOT EXISTS seata_stock.undo_log
 (
     id            BIGINT   NOT NULL,

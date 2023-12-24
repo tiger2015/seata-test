@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @Description
  * @Version: 1.0
  **/
-@TableName(value = "stock_tbl")
+@TableName(value = "t_stock")
 @Data
 public class Stock implements Serializable {
     private static final long serialVersionUID = 5274368589598872457L;
