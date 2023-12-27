@@ -1,7 +1,6 @@
 package com.tiger.seata.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.tiger.seata.common.exception.BusinessException;
 import com.tiger.seata.order.model.Order;
 
 /**
@@ -11,5 +10,5 @@ import com.tiger.seata.order.model.Order;
  * @Version: 1.0
  **/
 public interface OrderService extends IService<Order> {
-    int create(Order order) throws BusinessException;
+    int create(Order order);
 }

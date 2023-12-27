@@ -6,7 +6,6 @@ import com.tiger.seata.account.mapper.AccountMapper;
 import com.tiger.seata.account.model.Account;
 import com.tiger.seata.account.service.AccountService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author Zenghu
@@ -17,11 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
     @Override
-    @Transactional
+   // @Transactional
     public boolean debit(String userId, Double money) {
         UpdateWrapper<Account> wrapper = new UpdateWrapper<>();
         wrapper.setSql("amount = amount - " + money)
                 .eq("user_id", userId);
-        return update(wrapper);
+       return update(wrapper);
+       // throw new BusinessException(400, "account error");
     }
 }

@@ -4,10 +4,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-        username: nacos
-        password: nacos
         group: SEATA_GROUP
+      server-addr: 192.168.100.8:8848
+      username: nacos
+      password: nacos
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -19,9 +19,9 @@ seata:
   registry:
     type: nacos
     nacos:
-      server-addr: 127.0.0.1:8848
-      username: nacos
-      password: nacos
+      server-addr: ${spring.cloud.nacos.server-addr}
+      username: ${spring.cloud.nacos.username}
+      password: ${spring.cloud.nacos.password}
       group: SEATA_GROUP
       application: seata-server
   service:

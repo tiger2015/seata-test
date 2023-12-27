@@ -1,6 +1,5 @@
 package com.tiger.seata.order.controller;
 
-import com.tiger.seata.common.exception.BusinessException;
 import com.tiger.seata.common.ret.R;
 import com.tiger.seata.order.model.Order;
 import com.tiger.seata.order.service.OrderService;
@@ -24,7 +23,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/create")
-    public R<Integer> create(@RequestBody Order order) throws BusinessException {
+    public R<Integer> create(@RequestBody Order order) {
         int id = orderService.create(order);
         return R.success(id);
     }

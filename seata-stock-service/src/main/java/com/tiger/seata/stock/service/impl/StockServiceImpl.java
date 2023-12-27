@@ -6,7 +6,7 @@ import com.tiger.seata.stock.mapper.StockMapper;
 import com.tiger.seata.stock.model.Stock;
 import com.tiger.seata.stock.service.StockService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  * @Author Zenghu
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class StockServiceImpl extends ServiceImpl<StockMapper, Stock> implements StockService {
 
-    @Transactional
+    //@Transactional
     @Override
     public boolean deduct(String commodityCode, Integer count) {
         UpdateWrapper<Stock> wrapper = new UpdateWrapper<>();

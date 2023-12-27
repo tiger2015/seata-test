@@ -6,7 +6,7 @@ package com.tiger.seata.common.exception;
  * @Description
  * @Version: 1.0
  **/
-public class BaseException extends Exception {
+public class BaseException extends RuntimeException {
     private static final long serialVersionUID = 3928227538496774726L;
     private int code;
 

@@ -29,9 +29,9 @@ public class BusinessServiceImpl implements BusinessService {
     @Autowired
     private StockFeign stockFeign;
 
-    @GlobalTransactional(rollbackFor = {Exception.class, BusinessException.class})
+    @GlobalTransactional(rollbackFor = {Exception.class})
     @Override
-    public void purchase(String userId, String commodityCode, int orderCount) throws BusinessException {
+    public void purchase(String userId, String commodityCode, int orderCount) {
         final R<Void> deduct = stockFeign.deduct(commodityCode, orderCount);
         if (deduct.getCode() != 200) {
             throw new BusinessException(400, "扣减库存失败");
@@ -49,5 +49,8 @@ public class BusinessServiceImpl implements BusinessService {
         if (debit.getCode() != 200) {
             throw new BusinessException(400, "账户扣减金额失败");
         }
+//        if (order.getAmount() > 5){
+//            throw new BusinessException(400, "订单错误");
+//        }
     }
 }
